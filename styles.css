@@ -1,0 +1,210 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 0;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: url('https://citydays.com/blog-assets/media/images/arcade-games-in-London-01.width-800.jpg') no-repeat center center fixed;
+  background-size: cover;
+  filter: blur(3px);
+  z-index: -1;
+}
+
+.container {
+  max-width: 500px;
+  width: 90%;
+  margin-top: 40px;
+  background: rgba(255, 215, 116, 0.85);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  z-index: 1;
+}
+
+input[type="text"] {
+  width: 220px;
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  margin-left: 10px;
+  border: none;
+  border-radius: 6px;
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.result {
+  margin-top: 15px;
+  color: #c62828;
+  font-weight: bold;
+}
+
+#treeWrapper {
+  width: 100%;
+  overflow-x: auto; /* allows horizontal scroll */
+  overflow-y: hidden;
+  padding: 20px 0;
+  scroll-behavior: smooth;
+  z-index: 1;
+}
+
+#treeContainer {
+  display: inline-block; /* let it grow beyond the viewport if needed */
+  white-space: nowrap;
+  min-width: max-content;
+  padding: 0 40px;
+  position: relative;
+}
+
+ul {
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+
+ul ul {
+  padding-top: 30px;
+}
+
+li {
+  list-style: none;
+  text-align: center;
+  margin: 10px;
+  position: relative;
+  padding-top: 40px;
+}
+
+li::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 20px;
+  background: #ccc;
+  transform: translateX(-50%);
+}
+
+ul::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #ccc;
+  margin: 0 auto;
+}
+
+li:only-child::before,
+li:only-child ul::before {
+  display: none;
+}
+
+li:first-child::before,
+li:last-child::after {
+  border: none;
+}
+
+.node-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+  width: fit-content;
+  min-width: 100px;
+  margin: 0 auto;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.win-info {
+  font-size: 12px;
+  color: #333;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.encouragement {
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+/* Game board grid */
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 30px);
+  grid-template-rows: repeat(3, 30px);
+  gap: 3px;
+  background-color: #fff;
+  border-radius: 6px;
+  padding: 5px;
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.1);
+}
+
+.cell {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #aaa;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* Conditional border styles */
+.node-container.green {
+  border: 2px solid #4CAF50;
+  box-shadow: 0 0 6px #a5d6a7;
+}
+
+.node-container.red {
+  border: 2px solid #f44336;
+  box-shadow: 0 0 6px #ef9a9a;
+}
+
+.toggle-btn {
+  margin-top: 6px;
+  padding: 2px 8px;
+  font-size: 14px;
+  border-radius: 4px;
+  background: #eee;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
